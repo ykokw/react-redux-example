@@ -4,6 +4,7 @@ export const counterSlice = createSlice({
   name: 'counter',
   initialState: {
     value: 0,
+    lastAction: 'no action',
   },
   reducers: {
     increment: state => {
@@ -12,12 +13,15 @@ export const counterSlice = createSlice({
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
       state.value += 1;
+      state.lastAction = 'increment';
     },
     decrement: state => {
       state.value -= 1;
+      state.lastAction = 'decrement';
     },
     incrementByAmount: (state, action) => {
       state.value += action.payload;
+      state.lastAction = 'incrementByAmount';
     },
   },
 });
